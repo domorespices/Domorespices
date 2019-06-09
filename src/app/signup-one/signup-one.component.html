@@ -1,0 +1,134 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="sidenav">
+  <div class="login-main-text">
+    <h2><b>Domorespices</b></h2>
+    <p>Login or register from here to access.</p>
+  </div>
+</div>
+<div class="main align-item-center">
+  <div class="col-md-8 col-sm-12">
+    <div class="login-form myform">
+      <div *ngIf="valid" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>UserName or Password invalid!!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="signupFirstPage" #userForm="ngForm" (ngSubmit)="signup()">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" [(ngModel)]="singnupPage.firstName" class="form-control form-control-m"
+                 formControlName="firstName" name="firstName" placeholder="First name">
+          <span class="text-danger" id="firstName" *ngIf="signupFirstPage.get('firstName').invalid&&userForm.submitted">
+            Firstname is required
+            </span>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input [(ngModel)]="singnupPage.lastName" type="text" class="form-control form-control-m"
+                 formControlName="lastName" name="lastName" placeholder="Last name">
+          <span class="text-danger" id="lastName" *ngIf="signupFirstPage.get('lastName').invalid&&userForm.submitted">
+            Lastname is required
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Middle Name</label>
+            <input [(ngModel)]="singnupPage.middleName" type="text" class="form-control form-control-m"
+                 formControlName="middleName" name="middleName" placeholder="Middle name">
+          <span class="text-danger" id="middleName"
+                *ngIf="signupFirstPage.get('middleName').invalid&&userForm.submitted">
+            Middle name is required
+            </span>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input [(ngModel)]="singnupPage.email" type="email" class="form-control form-control-m"
+                 formControlName="mail" name="email" placeholder="Email">
+          <span class="text-danger" *ngIf="(signupFirstPage.get('mail').errors?.required && (signupFirstPage.get('mail').touched||
+                 userForm.submitted) ) && (signupFirstPage.get('mail').dirty || signupFirstPage.get('mail').errors.required  )">
+                 Email is required
+          </span>
+          <span class="text-danger" *ngIf="signupFirstPage.get('mail').errors?.pattern &&  (signupFirstPage.get('mail').dirty || 
+          signupFirstPage.get('mail').touched)">Please enter valid email 
+          </span>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input [(ngModel)]="singnupPage.mobileNumber" type="number" class="form-control form-control-m"
+                 formControlName="mobileNumber"  name="mobileNumber" placeholder="Mobile Number">
+          <span class="text-danger" *ngIf="(signupFirstPage.get('mobileNumber').errors?.required && (userForm.submitted) ) &&
+           (signupFirstPage.get('mobileNumber').dirty || signupFirstPage.get('mobileNumber').errors.required  )">
+          Mobile Number is required
+          </span>
+          <span class="text-danger" *ngIf="signupFirstPage.get('mobileNumber').errors?.pattern && 
+          (signupFirstPage.get('mobileNumber').dirty || signupFirstPage.get('mobileNumber').touched)">Please enter valid mobile number
+          </span>
+        </div>
+        <div class="form-group">
+          <label>Country</label>
+          <input [(ngModel)]="singnupPage.country" type="text" class="form-control form-control-m"
+                 formControlName="userCountry" name="country"  placeholder="India">
+        </div>
+        <div class="form-group">
+          <label>State</label>
+          <br>
+          <select [(ngModel)]="singnupPage.state" formControlName="userState" class="form-control form-control-m">
+            <option *ngFor="let state of fetchAllStatesByCountry('India')" value={{state}}>
+              {{state}}
+            </option>
+          </select>
+          <span class="text-danger" id="state" *ngIf="signupFirstPage.get('userState').invalid&&userForm.submitted">
+            State is required
+            </span>
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <br>
+          <select [(ngModel)]="singnupPage.city"  class="form-control form-control-m"
+                 formControlName="userCity" name="city" placeholder="City">
+                 <option value="" selected disabled>Select food type</option>
+                 <option *ngFor="let district of fetchAllDistrictsByState('tamilnadu')" value={{district}}>
+                  {{district}}
+                </option>
+          </select>
+          <span class="text-danger" id="city" *ngIf="signupFirstPage.get('userCity').invalid&&userForm.submitted">
+            City name is required
+            </span>
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <!-- <input [(ngModel)]="singnupPage.address" type="text" class="form-control form-control-m"
+                 formControlName="userAddress" name="address" placeholder="Address" rows = "4" cols = "35"> -->
+          <span class="text-danger" id="address" *ngIf="signupFirstPage.get('userAddress').invalid&&userForm.submitted">
+            Address is required
+            </span>
+            <textarea class="form-control form-control-m" rows = "4" cols = "35" name = "description"
+            [(ngModel)]="singnupPage.address"  formControlName="userAddress" name="address" placeholder="Address">
+              Enter details here...
+           </textarea>
+  
+        </div>
+        
+        <div class="form-group">
+          <label>Pincode</label>
+          <input [(ngModel)]="singnupPage.pincode" type="number" class="form-control form-control-m"
+                 formControlName="userPincode" name="pincode" placeholder="Pincode">
+          <span class="text-danger" id="pincode" *ngIf="signupFirstPage.get('userPincode').invalid&&userForm.submitted
+           &&signupFirstPage.get('userPincode').errors?.required">Pincode is required
+          </span>
+          <span class="text-danger" *ngIf="signupFirstPage.get('userPincode').errors?.pattern &&  (signupFirstPage.get('userPincode').dirty || 
+               signupFirstPage.get('userPincode').touched)">Pincode must be 6 digits 
+          </span>
+        </div>
+       
+        
+        <div class="below-links">
+          <div class="col-md-12 text-center ">
+            <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">next</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
