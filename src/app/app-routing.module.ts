@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupOneComponent } from './signup-one/signup-one.component';
 import { SignupTwoComponent } from './signup-two/signup-two.component';
-import { CreateInventryComponent } from './create-inventry/create-inventry.component';
+import { InventoryCreationComponent } from './inventory-creation/inventory-creation.component';
+
 
 const routes: Routes = [{path: 'login', component: LoginComponent},
                         {path: 'signupFirst', component: SignupOneComponent},
                         {path: 'signupSecond', component: SignupTwoComponent},
-                        {path: 'createInventry', component: CreateInventryComponent},
+                        {path: 'createInventry', component: InventoryCreationComponent},
                         ];
 
 @NgModule({
@@ -17,4 +18,4 @@ const routes: Routes = [{path: 'login', component: LoginComponent},
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [LoginComponent, SignupOneComponent, SignupTwoComponent, CreateInventryComponent];
+export const routingComponents = [LoginComponent, SignupOneComponent, SignupTwoComponent, InventoryCreationComponent];

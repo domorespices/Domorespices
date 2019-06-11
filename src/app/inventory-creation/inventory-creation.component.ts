@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
-import { InventryVO, InventryVOList } from './inventry-vo';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { FoodTypes } from '../i8n/getFoodTypes';
+import { InventryVOList } from './inventry-vo';
+
 @Component({
-  selector: 'app-create-inventry',
-  templateUrl: './create-inventry.component.html',
-  styleUrls: ['./create-inventry.component.css']
+  selector: 'app-inventory-creation',
+  templateUrl: './inventory-creation.component.html',
+  styleUrls: ['./inventory-creation.component.css']
 })
-export class CreateInventryComponent implements OnInit {
+export class InventoryCreationComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
@@ -104,5 +105,6 @@ export class CreateInventryComponent implements OnInit {
       price: ['', Validators.required]
     });
   }
+
 
 }
