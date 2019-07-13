@@ -9,7 +9,7 @@ import { InventoryCreationComponent } from './inventory-creation/inventory-creat
 const routes: Routes = [{path: 'login', component: LoginComponent},
                         {path: 'signupFirst', component: SignupOneComponent},
                         {path: 'signupSecond', component: SignupTwoComponent},
-                        {path: 'createInventry', component: InventoryCreationComponent},
+                        {path: 'createInventory', component: InventoryCreationComponent},
                         ];
 
 @NgModule({
