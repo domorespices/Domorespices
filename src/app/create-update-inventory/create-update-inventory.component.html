@@ -1,0 +1,66 @@
+
+
+<div class="sidenav">
+  <div class="login-main-text">
+     <h2><b>Domorespices</b></h2>
+     <div>
+      <form [formGroup]="foodForm" #userForm="ngForm"  >
+          <div class="form-group">
+              <label>Food Type</label>
+              <select formControlName="foodType" class="form-control" id="sel1">
+                <option class="form-control" value="selectFirst" selected disabled>Select food type</option>
+                <option >BREAKFAST</option>
+                <option>LUNCH</option>
+                <option>DINNER</option>
+              </select>
+            </div>
+          <label>Food Name</label>
+        <input type="text"  class="form-control form-control-m " 
+        formControlName="foodName"  placeholder="Food Name" required>
+        <label >Food Price</label>
+          <input type="number"  class="form-control form-control-m " 
+          formControlName="foodPrice"  placeholder="Food Price" required>
+          <button type="submit" (click)="createInventry(userForm)" >Add</button>
+     </form>
+    </div>
+  </div>
+</div>
+
+<div class="main align-item-center">
+  <div class="col-md-12 col-sm-12">
+    <div class="login-form myform">
+        <h3 *ngIf="!enableSaveButton">+ Add items to create your inventory</h3>
+        <form #form="ngForm">
+            <div *ngIf="inventory.breakfastList.length>0" >
+              <h5>Breakfast</h5>
+              <div *ngFor="let item of inventory.breakfastList; let i=index">
+                Food Name : <span>{{item.foodName}}</span>
+                Food Price : <span>{{item.foodPrice}}</span>
+                <button (click)="getObject(item,i)"> edit</button>
+                <button (click)="removeObject(item.foodType,i)"> Remove</button>
+              </div>
+            </div>
+            <div *ngIf="inventory.lunchList.length>0">
+              <h5>Lunch</h5>
+              <div *ngFor="let item of inventory.lunchList; let i=index">
+                Food Name : <span>{{item.foodName}}</span>
+                Food Price : <span>{{item.foodPrice}}</span>
+                <button (click)="getObject(item,i)"> edit</button>
+                <button (click)="removeObject(item.foodType,i)"> Remove</button>
+              </div>
+            </div>
+            <div *ngIf="inventory.dinnerList.length>0">
+              <h5>Dinner</h5>
+              <div *ngFor="let item of inventory.dinnerList; let i=index">
+                Food Name : <span>{{item.foodName}}</span>
+                Food Price : <span>{{item.foodPrice}}</span>
+                <button (click)="getObject(item,i)"> edit</button>
+                <button (click)="removeObject(item.foodType,i)"> Remove</button>
+              </div>
+            </div>
+            <button *ngIf="enableSaveButton" (click)="update()">Save </button>
+            </form>
+      </div>
+  </div>
+</div>
+

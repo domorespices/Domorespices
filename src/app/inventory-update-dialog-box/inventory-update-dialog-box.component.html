@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Update food item</h1>
+<div>
+  <form [formGroup]="foodForm" #userForm="ngForm"  >
+      <div class="form-group">
+          <label>Food Type</label>
+          <select formControlName="foodType" class="form-control" id="sel1">
+            <option class="form-control" value="selectFirst" selected disabled>Select food type</option>
+            <option >BREAKFAST</option>
+            <option>LUNCH</option>
+            <option>DINNER</option>
+          </select>
+        </div>
+      <label>Food Name</label>
+    <input type="text"  class="form-control form-control-m " 
+    formControlName="foodName"  placeholder="Food Name" required>
+    <label >Food Price</label>
+      <input type="number"  class="form-control form-control-m " 
+      formControlName="foodPrice"  placeholder="Food Price" required>
+      <div mat-dialog-actions>
+        <button mat-button (click)="updateInventory(userForm)">Update</button>
+      </div>
+ </form>
+</div>
