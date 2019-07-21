@@ -156,9 +156,10 @@ h2{
 }
 .mybtn{
    border-radius:15px;
-   width: 110%;
-   margin-left:-4%; 
+   width: 100%;
+   margin-left:0%; 
    font-size: 14px;
+   margin-top: 3%;
 }
 .login-or {
    position: relative;
@@ -177,4 +178,15 @@ h2{
    background-color: #fff;
    width: 50px;
    text-align: center;
+}
+
+.delete-button{
+   border-radius:100px;
+   color: #000;
+   background-color: red
+   
+}
+.update-button{
+   border-radius:100px;
+   color: #674ae9
 }

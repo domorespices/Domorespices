@@ -26,7 +26,7 @@ export class CreateUpdateInventoryComponent implements OnInit {
   }
 
   createInventry(userForm: NgForm) {
-    
+
     if (this.foodForm.get('foodType').value === 'BREAKFAST') {
       this.foodItem = this.foodForm.value;
       this.inventory.breakfastList.push(this.foodItem);
@@ -39,9 +39,10 @@ export class CreateUpdateInventoryComponent implements OnInit {
       this.inventory.dinnerList.push(this.foodItem);
 
     }
-    userForm.reset();
+
+    this.foodForm.get('foodName').reset();
+    this.foodForm.get('foodPrice').reset();
     this.enableSaveButton = true;
-    this.foodForm.get('foodType').setValue('Select food type');
   }
 
   getObject(item: FoodVO, i) {
@@ -75,7 +76,15 @@ export class CreateUpdateInventoryComponent implements OnInit {
 
 
   getBooleanForSave(): boolean {
-    return this.foodForm.dirty;
+    if (this.inventory.breakfastList.length === 0) {
+      return true;
+    }
+    if (this.inventory.lunchList.length === 0) {
+      return true;
+    }
+    if (this.inventory.dinnerList.length === 0) {
+      return true;
+    }
   }
 
 }
