@@ -31,4 +31,8 @@ export class InventoryUpdateDialogBoxComponent implements OnInit {
     }
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

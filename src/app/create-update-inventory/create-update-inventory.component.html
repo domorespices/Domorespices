@@ -42,6 +42,7 @@
   <div class="col-md-12 col-sm-12">
     <div class="login-form myform">
       <h3 *ngIf="!enableSaveButton">+ Add items to create your inventory</h3>
+      <h3 *ngIf="enableSaveButton" class="align-item-center">Hotel Name</h3>
       <form #form="ngForm">
         <div *ngIf="inventory.breakfastList.length>0">
           <h5>Breakfast</h5>
