@@ -34,17 +34,17 @@
           <h5>Breakfast</h5>
           <div *ngFor="let item of inventory.breakfastList; let i=index">
             <div class="row">
-              <div class="col-md-6">
-                  <span><i class="fas fa-hamburger"></i>{{item.foodName}}</span>
+              <div class="col-md-6 col-sm-6">
+                <i class="fa fa-cutlery" style="margin-right: 2%"></i><span>{{item.foodName}}</span>
               </div>
-              <div class="col-md-3">
-                <span>{{item.foodPrice}}.00rs</span>
+              <div class="col-md-3 col-sm-3">
+                <i class="fa fa-inr" style="margin-right: 2%"></i><span>{{item.foodPrice}}.00rs</span>
               </div>
-              <div class="col-md-1">
-                <button class="update-button" (click)="getObject(item,i)"><i class="far fa-edit"></i> </button>
+              <div class="col-md-1 col-sm-1">
+                <button class="update-button" title="Click to update"(click)="getObject(item,i)"><i class="fa fa-pencil-square-o"></i> </button>
               </div>
-              <div class="col-md-1">
-                <button class="delete-button" (click)="removeObject(item.foodType,i)"><i class="fa fa-trash" aria-hidden="true"></i> </button>
+              <div class="col-md-1 col-sm-1">
+                <button class="delete-button" title="Click to delete" *ngIf="inventory.breakfastList.length>1"(click)="removeObject(item.foodType,i)"><i class="fa fa-trash" aria-hidden="true"></i> </button>
               </div>
             </div>
           </div>
@@ -54,16 +54,16 @@
           <div *ngFor="let item of inventory.lunchList; let i=index">
             <div class="row">
               <div class="col-md-6">
-                <span>{{item.foodName}}</span>
+                <i class="fa fa-cutlery" style="margin-right: 2%"></i><span>{{item.foodName}}</span>
               </div>
               <div class="col-md-3">
-                <span>{{item.foodPrice}}.00rs</span>
+                <i class="fa fa-inr" style="margin-right: 2%"></i><span>{{item.foodPrice}}.00rs</span>
               </div>
               <div class="col-md-1">
-                <button class="update-button" (click)="getObject(item,i)"><i class="far fa-edit"></i> </button>
+                <button class="update-button" title="Click to update" (click)="getObject(item,i)"><i class="fa fa-pencil-square-o"></i> </button>
               </div>
               <div class="col-md-1">
-                <button class="delete-button" (click)="removeObject(item.foodType,i)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+                <button class="delete-button" title="Click to delete" (click)="removeObject(item.foodType,i)" *ngIf="inventory.lunchList.length>1"> <i class="fa fa-trash" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>
@@ -73,16 +73,16 @@
           <div *ngFor="let item of inventory.dinnerList; let i=index">
             <div class="row">
               <div class="col-md-6">
-                <span>{{item.foodName}}</span>
+                <i class="fa fa-cutlery" style="margin-right: 2%"></i><span>{{item.foodName}}</span>
               </div>
               <div class="col-md-3">
-                <span>{{item.foodPrice}}.00rs</span>
+                <i class="fa fa-inr" style="margin-right: 2%"></i><span>{{item.foodPrice}}.00rs</span>
               </div>
               <div class="col-md-1">
-                <button class="update-button" (click)="getObject(item,i)"> <i class="far fa-edit"></i></button>
+                <button class="update-button" title="Click to update" (click)="getObject(item,i)"> <i class="fa fa-pencil-square-o"></i></button>
               </div>
               <div class="col-md-1">
-                <button class="delete-button" (click)="removeObject(item.foodType,i)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+                <button class="delete-button" title="Click to delete" (click)="removeObject(item.foodType,i)" *ngIf="inventory.dinnerList.length>1"> <i class="fa fa-trash" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>
