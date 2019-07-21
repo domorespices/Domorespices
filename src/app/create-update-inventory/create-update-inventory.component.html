@@ -11,13 +11,26 @@
             <option>LUNCH</option>
             <option>DINNER</option>
           </select>
+          <span *ngIf="foodForm.get('foodType').errors?.required && userForm.submitted">
+            Food Type is required
+          </span>
         </div>
+        <div class="form-group">
         <label>Food Name</label>
         <input type="text" class="form-control form-control-m " formControlName="foodName" placeholder="Food Name"
           required>
+          <span  *ngIf="foodForm.get('foodName').errors?.required && userForm.submitted">
+            Food Name is required
+          </span>
+        </div>
+        <div class="form-group">
         <label>Food Price</label>
         <input type="number" class="form-control form-control-m " formControlName="foodPrice" placeholder="Food Price"
           required>
+          <span  *ngIf="foodForm.get('foodPrice').errors?.required && userForm.submitted">
+            Food Price is required
+          </span>
+        </div>
         <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" (click)="createInventry(userForm)">Add
           item to inventory</button>
       </form>

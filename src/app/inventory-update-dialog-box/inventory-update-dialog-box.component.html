@@ -1,23 +1,33 @@
 <h1 mat-dialog-title>Update food item</h1>
 <div>
-  <form [formGroup]="foodForm" #userForm="ngForm"  >
-      <div class="form-group">
-          <label>Food Type</label>
-          <select formControlName="foodType" class="form-control" id="sel1">
-            <option class="form-control" value="selectFirst" selected disabled>Select food type</option>
-            <option >BREAKFAST</option>
-            <option>LUNCH</option>
-            <option>DINNER</option>
-          </select>
-        </div>
+  <form [formGroup]="foodForm" #userForm="ngForm">
+    <div class="form-group">
+      <label>Food Type</label>
+      <select formControlName="foodType" class="form-control" id="sel1">
+        <option class="form-control" value="selectFirst" selected disabled>Select food type</option>
+        <option>BREAKFAST</option>
+        <option>LUNCH</option>
+        <option>DINNER</option>
+      </select>
+    </div>
+    <div class="form-group">
       <label>Food Name</label>
-    <input type="text"  class="form-control form-control-m " 
-    formControlName="foodName"  placeholder="Food Name" required>
-    <label >Food Price</label>
-      <input type="number"  class="form-control form-control-m " 
-      formControlName="foodPrice"  placeholder="Food Price" required>
-      <div mat-dialog-actions>
-        <button mat-raised-button (click)="updateInventory(userForm)" color="primary">Update</button>
-      </div>
- </form>
+      <input type="text" class="form-control form-control-m " formControlName="foodName" placeholder="Food Name"
+        required>
+      <span class="text-danger" *ngIf="foodForm.get('foodName').errors?.required && userForm.submitted">
+        Food Name is required
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Food Price</label>
+      <input type="number" class="form-control form-control-m " formControlName="foodPrice" placeholder="Food Price"
+        required>
+      <span class="text-danger"*ngIf="foodForm.get('foodPrice').errors?.required && userForm.submitted">
+        Food Price is required
+      </span>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button (click)="updateInventory(userForm)" color="primary">Update</button>
+    </div>
+  </form>
 </div>

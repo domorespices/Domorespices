@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, NgForm, Validators } from '@angular/forms';
 import { InventoryVO, FoodVO } from './food-inventory-vo';
 import { MatDialog } from '@angular/material/dialog';
 import { InventoryUpdateDialogBoxComponent } from '../inventory-update-dialog-box/inventory-update-dialog-box.component';
@@ -18,32 +18,31 @@ export class CreateUpdateInventoryComponent implements OnInit {
   enableSaveButton = false;
   ngOnInit() {
     this.foodForm = this.fb.group({
-      foodType: [''],
-      foodName: [''],
-      foodPrice: ['']
+      foodType: ['', [Validators.required]],
+      foodName: ['', [Validators.required]],
+      foodPrice: ['', [Validators.required]]
     });
 
   }
 
   createInventry(userForm: NgForm) {
+    if (userForm.valid) {
+      if (this.foodForm.get('foodType').value === 'BREAKFAST') {
+        this.foodItem = this.foodForm.value;
+        this.inventory.breakfastList.push(this.foodItem);
 
-    if (this.foodForm.get('foodType').value === 'BREAKFAST') {
-      this.foodItem = this.foodForm.value;
-      this.inventory.breakfastList.push(this.foodItem);
-
-    } else if (this.foodForm.get('foodType').value === 'LUNCH') {
-      this.foodItem = this.foodForm.value;
-      this.inventory.lunchList.push(this.foodItem);
-    } else if (this.foodForm.get('foodType').value === 'DINNER') {
-      this.foodItem = this.foodForm.value;
-      this.inventory.dinnerList.push(this.foodItem);
-
+      } else if (this.foodForm.get('foodType').value === 'LUNCH') {
+        this.foodItem = this.foodForm.value;
+        this.inventory.lunchList.push(this.foodItem);
+      } else if (this.foodForm.get('foodType').value === 'DINNER') {
+        this.foodItem = this.foodForm.value;
+        this.inventory.dinnerList.push(this.foodItem);
+      }
+      this.foodForm.get('foodName').reset();
+      this.foodForm.get('foodPrice').reset();
+      this.enableSaveButton = true;
     }
-
-    this.foodForm.get('foodName').reset();
-    this.foodForm.get('foodPrice').reset();
-    this.enableSaveButton = true;
-  }
+}
 
   getObject(item: FoodVO, i) {
     item.index = i;
