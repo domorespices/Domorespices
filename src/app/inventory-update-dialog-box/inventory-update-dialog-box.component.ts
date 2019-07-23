@@ -32,7 +32,8 @@ export class InventoryUpdateDialogBoxComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.data = this.foodForm.getRawValue();
+    this.dialogRef.close(this.data);
   }
 
 }
